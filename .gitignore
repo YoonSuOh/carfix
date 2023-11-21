@@ -38,3 +38,4 @@ out/
 
 ### user_info ###
 application.properties
+application-oauth.properties

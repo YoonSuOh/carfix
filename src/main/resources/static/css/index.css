@@ -1,0 +1,42 @@
+#wrap {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+#logo {
+  color: red;
+}
+
+#userinfo{
+  position:absolute;
+  left:74%;
+  top:4%;
+}
+
+#menu {
+  display: flex;
+  margin-left: -2%;
+}
+
+.menu-item {
+  padding-left: 2%;
+}
+
+#section{
+ width:100%;
+}
+
+.recommand {
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.recommandlist {
+  flex: 1 1 40%;
+}
+
+#hr {
+  width: 100%;
+}
