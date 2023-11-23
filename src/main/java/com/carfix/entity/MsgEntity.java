@@ -1,2 +1,17 @@
-package com.carfix.entity;public class MsgEntity {
+package com.carfix.entity;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+
+@Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class MsgEntity {
+
+    private String id;
+    private Object result;
+
+    public MsgEntity(String id, Object result) {
+        this.id = id;
+        this.result  = result;
+    }
 }

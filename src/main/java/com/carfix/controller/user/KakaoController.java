@@ -1,2 +1,28 @@
-package com.carfix.controller.user;public class KakaoController {
+package com.carfix.controller.user;
+
+import com.carfix.dto.KakaoDTO;
+import com.carfix.entity.MsgEntity;
+import com.carfix.service.KakaoService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("kakao")
+public class KakaoController {
+
+    private final KakaoService kakaoService;
+
+    @GetMapping("/callback")
+    public ResponseEntity<MsgEntity> callback(HttpServletRequest request) throws Exception {
+        KakaoDTO kakaoInfo = kakaoService.getKakaoInfo(request.getParameter("code"));
+
+        return ResponseEntity.ok()
+                .body(new MsgEntity("Success", kakaoInfo));
+    }
 }

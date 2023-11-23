@@ -39,3 +39,4 @@ out/
 ### user_info ###
 application.properties
 application-oauth.properties
+application.yml

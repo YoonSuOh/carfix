@@ -1,2 +1,14 @@
-package com.carfix.dto;public class KakaoDTO {
+package com.carfix.dto;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Builder
+@Data
+public class KakaoDTO {
+
+    private long id;
+    private String email;
+    private String nickname;
+
 }
