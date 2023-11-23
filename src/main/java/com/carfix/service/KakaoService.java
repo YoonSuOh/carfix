@@ -35,9 +35,6 @@ public class KakaoService {
                 + "&response_type=code";
     }
 
-    public String addKakaoUser(){
-
-    }
     public KakaoDTO getKakaoInfo(String code) throws Exception {
         if (code == null) throw new Exception("Failed get authorization code");
 
