@@ -1,7 +1,7 @@
-package com.carfix.controller.social;
+package com.carfix.user;
 
-import com.carfix.entity.UserEntity;
-import com.carfix.service.KakaoService;
+import com.carfix.user.entity.UserEntity;
+import com.carfix.user.service.KakaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

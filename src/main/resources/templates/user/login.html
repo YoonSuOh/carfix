@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>소셜로그인 예제</title>
+    <meta charset="UTF-8" />
+    <title>카픽스:로그인</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/index.css" />
 </head>
-<body>
-<div class="text-center">
-    <a href="https://kauth.kakao.com/oauth/authorize"
-       th:href="@{https://kauth.kakao.com/oauth/authorize(client_id=${kakaoApiKey}, redirect_uri=${redirectUri}, response_type='code')}">
-        <img src="/images/kakao_login_medium_narrow.png">
-    </a>
+<body id="wrap">
+<div id="header">
+    <div th:insert="/header"></div>
+</div>
+<div id="section">
+    <div id="container">
+        <h1>로그인</h1>
+        <div id="logincontainer">
+            <div class="text-center">
+                <a href="/kakao/kakaoTerms">
+                    <img src="/images/kakao_login_medium_narrow.png">
+                </a>
+            </div>
+            <div class="text-center">
+                <a href="/kakao/kakaoTerms">
+                    <img style="width:182px; height:45px;" src="/images/btnG_축약형.png">
+                </a>
+            </div>
+            <div class="text-center">
+                <a href="/kakao/kakaoTerms">
+                    <img style="width:182px;" src="/images/web_light_sq_ctn@1x.png">
+                </a>
+            </div>
+        </div>
+        <div>
+            <span id="description">소셜 로그인으로 편하게 카픽스에 로그인하세요.</span>
+        </div>
+    </div>
 </div>
 </body>
 </html>

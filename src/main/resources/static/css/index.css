@@ -4,6 +4,41 @@
   margin-right: 20%;
 }
 
+#container{
+  display:block;
+  bottom:20%;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 350px;
+  border-radius:5px;
+  box-shadow: 1px 1px 30px -1px #00FFFF;
+  text-align: center;
+  position: relative;
+}
+
+#container > h1{
+  position:absolute;
+  top:-1%;
+  left:43%;
+}
+
+#logincontainer{
+  position:absolute;
+  top:24%;
+  left:33%;
+  width:auto;
+  height:auto;
+}
+
+#description{
+  position:absolute;
+  top:77%;
+  left:22%;
+}
+.text-center{
+
+}
 #logo {
   color: red;
 }
@@ -12,6 +47,28 @@
   position:absolute;
   left:74%;
   top:4%;
+}
+
+#userinfo > span > a{
+  text-decoration: none;
+  color:black;
+}
+
+#userinfo > span > a:hover{
+  text-decoration: none;
+  color:red;
+}
+
+#usermodify{
+  width:60%;
+  margin-left:20%;
+  margin-right:20%;
+  border-radius:5px;
+  box-shadow: 1px 1px 30px -1px #00FFFF;
+}
+
+#formhidden{
+  display:none;
 }
 
 #menu {

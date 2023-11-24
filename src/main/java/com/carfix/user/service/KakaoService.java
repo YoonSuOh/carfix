@@ -1,8 +1,8 @@
-package com.carfix.service;
+package com.carfix.user.service;
 
 
-import com.carfix.entity.UserEntity;
-import com.carfix.repository.UserRepository;
+import com.carfix.user.entity.UserEntity;
+import com.carfix.user.repository.UserRepository;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

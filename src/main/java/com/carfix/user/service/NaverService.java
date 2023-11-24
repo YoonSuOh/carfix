@@ -1,6 +1,6 @@
-package com.carfix.service;
+package com.carfix.user.service;
 
-import com.carfix.entity.UserEntity;
+import com.carfix.user.entity.UserEntity;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.springframework.stereotype.Service;

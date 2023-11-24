@@ -1,7 +1,7 @@
-package com.carfix.service;
+package com.carfix.user.service;
 
-import com.carfix.entity.UserEntity;
-import com.carfix.repository.UserRepository;
+import com.carfix.user.entity.UserEntity;
+import com.carfix.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

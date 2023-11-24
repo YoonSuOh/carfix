@@ -1,4 +1,4 @@
-package com.carfix.entity;
+package com.carfix.user.entity;
 
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;

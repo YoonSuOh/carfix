@@ -1,6 +1,6 @@
-package com.carfix.service;
+package com.carfix.user.service;
 
-import com.carfix.entity.UserEntity;
+import com.carfix.user.entity.UserEntity;
 
 public interface SocialLoginService {
     public String getToken(String code) throws Exception;

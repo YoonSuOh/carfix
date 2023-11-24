@@ -1,6 +1,6 @@
-package com.carfix.repository;
+package com.carfix.user.repository;
 
-import com.carfix.entity.UserEntity;
+import com.carfix.user.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,10 +1,36 @@
 <h1 id="logo">CARFIX</h1>
 <div id="userinfo">
-    <span><a href="/users/login">로그인</a></span>
-    <span><a href="/users/join">회원가입</a></span>
+    <th:block th:if="${not #strings.isEmpty(session.token)}">
+        <span id="nick">[[${session.nickname}]]님</span>
+        <span>|</span>
+        <span><a href="/kakao/kakaologout">로그아웃</a></span>
+    </th:block>
+    <th:block th:unless="${not #strings.isEmpty(session.token)}">
+        <span><a href="/users/login">로그인</a></span>
+    </th:block>
 </div>
 <div id="menu">
-    <span class="menu-item"><h2>수리 요청</h2></span>
-    <span class="menu-item"><h2>수리 상황</h2></span>
-    <span class="menu-item"><h2>제안 견적 비교</h2></span>
+    <span class="menu-item"><h4>수리 요청</h4></span>
+    <span class="menu-item"><h4>수리 상황</h4></span>
+    <span class="menu-item"><h4>제안 견적 비교</h4></span>
+</div>
+<div style="display:none;" id="formhidden">
+    <div id="usermodify" class="d-flex justify-content-center">
+        <div id="userform" class="my-3">
+            <h3>회원정보 수정</h3>
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" th:value="${session.nickname}" class="form-control col-12" readonly>
+            </div>
+            <div class="form-group">
+                <label for="email">이메일 주소</label>
+                <input type="text" id="email" name="email" th:value="${session.email}" class="form-control col-12" readonly>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">전화번호</label>
+                <input type="text" id="phoneNumber" th:value="${session.phoneNumber}" name="phoneNumber" class="form-control col-12" >
+            </div>
+            <input type="button" id="joinBtn" class="btn btn-success text-center" value="수정" />
+        </div>
+    </div>
 </div>
