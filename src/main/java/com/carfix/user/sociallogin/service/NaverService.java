@@ -1,4 +1,4 @@
-package com.carfix.user.service;
+package com.carfix.user.sociallogin.service;
 
 import com.carfix.user.entity.UserEntity;
 import com.google.gson.JsonElement;

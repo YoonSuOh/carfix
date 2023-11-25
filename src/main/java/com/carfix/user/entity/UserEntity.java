@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @ToString
@@ -29,9 +30,9 @@ public class UserEntity {
 
     @UpdateTimestamp    // 현재시간 디폴트값
     @Column(name="createdAt", updatable = false) // insert시 최초 시간만 넣고 시간 수정 안되게
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp   // 현재시간 디폴트값
     @Column(name="updatedAt")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 }

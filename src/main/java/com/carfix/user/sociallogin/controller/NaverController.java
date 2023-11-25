@@ -1,6 +1,6 @@
-package com.carfix.user;
+package com.carfix.user.sociallogin.controller;
 
-import com.carfix.user.service.NaverService;
+import com.carfix.user.sociallogin.service.NaverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,8 +1,9 @@
-package com.carfix.user;
+package com.carfix.user.sociallogin.controller;
 
 import com.carfix.user.entity.UserEntity;
-import com.carfix.user.service.KakaoService;
+import com.carfix.user.sociallogin.service.KakaoService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/kakao")
 public class KakaoController {
@@ -39,7 +41,10 @@ public class KakaoController {
         System.out.println("access_token : " + access_token);
         UserEntity user = kakaoService.getUserInfo(access_token);
 
+        log.info("id : " + user.getId());
+
         session.setAttribute("token", access_token);
+        session.setAttribute("id", user.getId());
         session.setAttribute("nickname", user.getNickname());
         session.setAttribute("email", user.getEmail());
         session.setAttribute("phoneNumber", user.getPhoneNumber());
@@ -50,9 +55,6 @@ public class KakaoController {
     // 카카오 로그아웃
     @GetMapping("/kakaologout")
     public String access(HttpSession session) throws IOException {
-        String client_id = "f7cb1db7fa96462cab3a07f62034838d";
-        String redirect_url = "http://localhost:8080/";
-
         session.invalidate();
         return "redirect:https://kauth.kakao.com/oauth/logout?client_id=f7cb1db7fa96462cab3a07f62034838d&logout_redirect_uri=http://localhost:8080/";
     }

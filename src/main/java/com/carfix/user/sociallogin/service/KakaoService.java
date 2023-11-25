@@ -1,4 +1,4 @@
-package com.carfix.user.service;
+package com.carfix.user.sociallogin.service;
 
 
 import com.carfix.user.entity.UserEntity;
@@ -113,6 +113,7 @@ public class KakaoService implements SocialLoginService{
                     .payBalance(0)
                     .phoneNumber("010-0000-0000")
                     .build());
+            user = userRepository.findByNickname(nickname);
         }
         return user;
     }
