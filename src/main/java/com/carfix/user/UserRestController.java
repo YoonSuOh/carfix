@@ -1,5 +1,6 @@
 package com.carfix.user;
 
+import com.carfix.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>업체 관리 - 업체 상태 조회</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- jquery 원본 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>업체명</th>
+                    <th>대표자</th>
+                    <th>주소</th>
+                    <th>연락처</th>
+                    <th>승인여부</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="company : ${company}">
+                    <td>[[${company.name}]]</td>
+                    <td>[[${company.ceo}]]</td>
+                    <td>[[${company.address}]]</td>
+                    <td>[[${company.tel}]]</td>
+                    <th:block th:if="${company.approve == 1}">
+                        <td class="text-success">승인</td>
+                    </th:block>
+                    <th:block th:unless="${company.approve == 1}">
+                        <td class="text-danger">승인대기</td>
+                    </th:block>
+                    <th:block th:if="${company.approve == 0}">
+                        <td><button class="btn btn-success approveBtn" th:attr="data-id=${company.companyidx}">승인</button></td>
+                    </th:block>
+                    <th:block th:unless="${company.approve == 0}">
+                        <td><button class="btn btn-danger cancelBtn" th:attr="data-id=${company.companyidx}">승인취소</button></td>
+                    </th:block>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="/js/approve.js"></script>
+</body>
+</html>

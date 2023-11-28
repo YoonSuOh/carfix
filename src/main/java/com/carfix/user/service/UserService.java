@@ -1,4 +1,4 @@
-package com.carfix.user;
+package com.carfix.user.service;
 
 import com.carfix.user.entity.UserEntity;
 import com.carfix.user.repository.UserRepository;
