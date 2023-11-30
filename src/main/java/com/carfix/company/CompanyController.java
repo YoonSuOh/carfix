@@ -16,6 +16,6 @@ public class CompanyController {
     // 업체 정보 화면으로 이동
     @GetMapping("/info")
     public String getCompanyInfo(){
-        return "company/info";
+        return "map";
     }
 }

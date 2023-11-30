@@ -33,6 +33,7 @@ dependencies {
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.7'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+	implementation 'com.google.maps:google-maps-services:0.15.0' // Google Maps API 의존성 추가
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'

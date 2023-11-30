@@ -52,4 +52,9 @@ public class CompanyService {
         companyRepository.save(companyInfo);
         return companyInfo;
     }
+
+    // 승인된 업체만 보여주기
+    public List<CompanyEntity> findByApprove(){
+        return companyRepository.findByApprove(1);
+    }
 }

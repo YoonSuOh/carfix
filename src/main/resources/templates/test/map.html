@@ -1,60 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-  <title>간단한 지도 표시하기</title>
-  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=r3tj9phpyd"></script>
-</head>
-<body>
-<div id="map" style="width:100%;height:400px;"></div>
+  <title>Google Maps</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63jdrc3pRrYKwBui11CgWXcrD0arWc7o&libraries=places"></script>
+  <script>
+    let map;
 
-<script>
-  var map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng(37.5666805, 126.9784147),
-    zoom: 10,
-    mapTypeId: naver.maps.MapTypeId.NORMAL
-  });
+    $(document).ready(function() {
+      initMap();
+    });
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 15
+      });
 
-  var infowindow = new naver.maps.InfoWindow();
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
 
-  function onSuccessGeolocation(position) {
-    var location = new naver.maps.LatLng(position.coords.latitude,
-            position.coords.longitude);
+          new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: 'You are here!'
+          });
 
-    map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
-    map.setZoom(10); // 지도의 줌 레벨을 변경합니다.
-
-    infowindow.setContent('<div style="padding:20px;">' + 'geolocation.getCurrentPosition() 위치' + '</div>');
-
-    infowindow.open(map, location);
-    console.log('Coordinates: ' + location.toString());
-  }
-
-  function onErrorGeolocation() {
-    var center = map.getCenter();
-
-    infowindow.setContent('<div style="padding:20px;">' +
-            '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
-
-    infowindow.open(map, center);
-  }
-
-  $(window).on("load", function() {
-    if (navigator.geolocation) {
-      /**
-       * navigator.geolocation 은 Chrome 50 버젼 이후로 HTTP 환경에서 사용이 Deprecate 되어 HTTPS 환경에서만 사용 가능 합니다.
-       * http://localhost 에서는 사용이 가능하며, 테스트 목적으로, Chrome 의 바로가기를 만들어서 아래와 같이 설정하면 접속은 가능합니다.
-       * chrome.exe --unsafely-treat-insecure-origin-as-secure="http://example.com"
-       */
-      navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
-    } else {
-      var center = map.getCenter();
-      infowindow.setContent('<div style="padding:20px;"><h5 style="margin-bottom:5px;color:#f00;">Geolocation not supported</h5></div>');
-      infowindow.open(map, center);
+          map.setCenter(pos);
+        }, function() {
+          handleLocationError(true, map.getCenter());
+        });
+      } else {
+        handleLocationError(false, map.getCenter());
+      }
     }
-  });
-</script>
+
+    function handleLocationError(browserHasGeolocation, pos) {
+      const infoWindow = new google.maps.InfoWindow();
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+              'Error: The Geolocation service failed.' :
+              'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+    function alertMyLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          // Display coordinates in an alert
+          alert('Your current coordinates: ' + pos.lat + ', ' + pos.lng);
+        }, function() {
+          handleLocationError(true, map.getCenter());
+        });
+      } else {
+        handleLocationError(false, map.getCenter());
+      }
+    }
+  </script>
+</head>
+<body onload="initMap()">
+<div id="map" style="height: 400px; width: 100%;"></div>
+<button type="button" id="myPosBtn">현재 위치 정보 전송</button>
 </body>
 </html>

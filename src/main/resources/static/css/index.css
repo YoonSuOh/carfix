@@ -119,13 +119,12 @@
  width:100%;
 }
 
-.recommand {
-  display: flex;
-  width: 80%;
+#itemcontainer{
+  display:flex;
   flex-wrap: wrap;
 }
 
-.recommandlist {
+.item {
   flex: 1 1 40%;
 }
 
