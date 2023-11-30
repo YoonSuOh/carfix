@@ -4,69 +4,9 @@
   <title>Google Maps</title>
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63jdrc3pRrYKwBui11CgWXcrD0arWc7o&libraries=places"></script>
-  <script>
-    let map;
-
-    $(document).ready(function() {
-      initMap();
-    });
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 15
-      });
-
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          new google.maps.Marker({
-            position: pos,
-            map: map,
-            title: 'You are here!'
-          });
-
-          map.setCenter(pos);
-        }, function() {
-          handleLocationError(true, map.getCenter());
-        });
-      } else {
-        handleLocationError(false, map.getCenter());
-      }
-    }
-
-    function handleLocationError(browserHasGeolocation, pos) {
-      const infoWindow = new google.maps.InfoWindow();
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-              'Error: The Geolocation service failed.' :
-              'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
-    function alertMyLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          // Display coordinates in an alert
-          alert('Your current coordinates: ' + pos.lat + ', ' + pos.lng);
-        }, function() {
-          handleLocationError(true, map.getCenter());
-        });
-      } else {
-        handleLocationError(false, map.getCenter());
-      }
-    }
-  </script>
+  <script src="/js/map.js"></script>
 </head>
-<body onload="initMap()">
+<body>
 <div id="map" style="height: 400px; width: 100%;"></div>
-<button type="button" id="myPosBtn">현재 위치 정보 전송</button>
 </body>
 </html>
