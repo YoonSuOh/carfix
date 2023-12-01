@@ -47,7 +47,7 @@ function handleLocationError(browserHasGeolocation, pos) {
 function sendLocation(pos) {
     // Send coordinates to the server using Ajax
     $.ajax({
-        type:"POST"
+        type:"PUT"
         ,url:"/map/distance"
         ,data: JSON.stringify(pos)
         ,contentType: 'application/json'
