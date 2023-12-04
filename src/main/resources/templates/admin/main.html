@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>카픽스 관리자 메인 페이지</title>
 </head>
 <body>
-
+    <th:block th:if="${session.admin != null}">
+        <a href="/admin/companys">업체 관리</a>
+    </th:block>
+    <th:block th:unless="${session.id != null}">
+        <script>
+            alert('로그인이 필요합니다.');
+            location.href="/admin/login";
+        </script>
+    </th:block>
 </body>
 </html>

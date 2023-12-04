@@ -9,9 +9,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <table class="table text-center">
-            <thead>
+    <th:block th:if="${session.admin != null}">
+        <div class="container">
+            <table class="table text-center">
+                <thead>
                 <tr>
                     <th>업체명</th>
                     <th>대표자</th>
@@ -20,8 +21,8 @@
                     <th>승인여부</th>
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr th:each="company : ${company}">
                     <td>[[${company.name}]]</td>
                     <td>[[${company.ceo}]]</td>
@@ -40,9 +41,16 @@
                         <td><button class="btn btn-danger cancelBtn" th:attr="data-id=${company.companyidx}">승인취소</button></td>
                     </th:block>
                 </tr>
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+    <th:block th:unless="${session.admin != null}">
+        <script>
+            alert('로그인이 필요합니다.');
+            location.href="/admin/login";
+        </script>
+    </th:block>
     <script src="/js/approve.js"></script>
 </body>
 </html>

@@ -131,3 +131,7 @@
 #hr {
   width: 100%;
 }
+
+.companyInfo > p{
+  margin-bottom:0;
+}

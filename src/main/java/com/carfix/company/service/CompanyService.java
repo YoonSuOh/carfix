@@ -29,7 +29,7 @@ public class CompanyService {
         return companyInfo;
     }
 
-    // 업체 조회
+    // 업체 목록 조회
     public List<CompanyEntity> checkApprove(){
         List<CompanyEntity> approve = companyRepository.findAll();
         return approve;
@@ -57,4 +57,7 @@ public class CompanyService {
     public List<CompanyEntity> findByApprove(){
         return companyRepository.findByApprove(1);
     }
+
+    // 업체 정보 가져오기
+    public CompanyEntity findById(int id){return companyRepository.findByCompanyIdx(id);}
 }

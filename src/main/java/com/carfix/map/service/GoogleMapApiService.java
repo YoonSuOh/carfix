@@ -17,10 +17,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GoogleMapApiService {
     private final CompanyRepository companyRepository;
-    private List<Double> list = new ArrayList<>();
+    private List<Double> list;
 
     // 모든 회사의 주소별로 거리를 계산하여 리스트에 저장 후 반환
     public void extractCoordinatesFromAddress(double lat2, double lng2) {
+        list = new ArrayList<>();
         List<CompanyEntity> company = companyRepository.findAll();
         if(company != null){
             GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyA63jdrc3pRrYKwBui11CgWXcrD0arWc7o").build();

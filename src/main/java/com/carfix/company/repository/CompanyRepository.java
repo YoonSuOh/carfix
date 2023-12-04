@@ -14,11 +14,12 @@ public interface CompanyRepository extends JpaRepository<CompanyEntity, Integer>
     @Query(value = "select * from company "
             + "where companyIdx = :companyIdx ",
             nativeQuery = true)
-    public CompanyEntity findByCompanyIdx(int companyIdx);
+    CompanyEntity findByCompanyIdx(int companyIdx);
     @Query(value = "select * from company "
-            + "where approve = :approve ",
+            + "where approve = :approve " +
+            "order by distance asc",
             nativeQuery = true)
-    public List<CompanyEntity> findByApprove(int approve);
+    List<CompanyEntity> findByApprove(int approve);
 
     @Query(value = "UPDATE company " +
             "SET distance = :distance " +
@@ -26,9 +27,9 @@ public interface CompanyRepository extends JpaRepository<CompanyEntity, Integer>
             nativeQuery = true)
     @Modifying
     @Transactional
-    public void updateByDistance(double distance, int companyIdx);
+    void updateByDistance(double distance, int companyIdx);
 
     @Query(value = "select companyIdx from company",
             nativeQuery = true)
-    public List<Integer> findIdx();
+    List<Integer> findIdx();
 }

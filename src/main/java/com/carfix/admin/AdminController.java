@@ -16,6 +16,11 @@ import java.util.List;
 public class AdminController {
     private final CompanyService companyService;
 
+    // 관리자 메인 화면
+    @GetMapping("")
+    public String getAdminMain(){
+        return  "admin/main";
+    }
     // 관리자 로그인 화면
     @GetMapping("/login")
     public String getAdminLogin(){
