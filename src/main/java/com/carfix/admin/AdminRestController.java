@@ -43,7 +43,7 @@ public class AdminRestController {
             map.put("code", 200);
         } else {
             map.put("code", 500);
-            if(admin != null){
+            if(admin == null){
                 map.put("errorMessage", "유효하지 않은 id입니다.");
             }
             if(id.equals(admin.getId())){

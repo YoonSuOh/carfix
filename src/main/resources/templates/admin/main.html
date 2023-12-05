@@ -8,7 +8,7 @@
     <th:block th:if="${session.admin != null}">
         <a href="/admin/companys">업체 관리</a>
     </th:block>
-    <th:block th:unless="${session.id != null}">
+    <th:block th:unless="${session.admin != null}">
         <script>
             alert('로그인이 필요합니다.');
             location.href="/admin/login";
