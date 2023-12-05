@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>카픽스 - 수리 요청</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <!-- jquery 원본 -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/request/create.css" />
+</head>
+<body id="wrap">
+<div id="header">
+  <div th:insert="/header"></div>
+</div>
+<br>
+<div id="section1">
+  <h4>수리 요청하기</h4>
+  <hr id="hr">
+  <h4>Step.2 차량 정보 등록</h4>
+  <div class="status d-flex justify-center">
+    <div id="first" class="status-area">
+      <div class="circle-success">
+        <h1 class="number">1</h1>
+      </div>
+      <p class="mt-2">고객정보 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div id="second" class="status-area">
+      <div class="circle">
+        <h1 class="number">2</h1>
+      </div>
+      <p class="mt-2">차량정보 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div id="third" class="status-area">
+      <div class="circle-next">
+        <h1 class="number">3</h1>
+      </div>
+      <p class="mt-2">파손부위 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div id="last" class="status-area">
+      <div class="circle-next">
+        <h1 class="number">4</h1>
+      </div>
+      <p class="mt-2">번ㅇ</p>
+    </div>
+  </div>
+  <div class="align-items-center">
+    <form action="/requests/create/1" method="get">
+      <label>모델</label>
+      <input class="form-control col-7" name="model">
+      <label>연락처</label>
+      <input class="form-control col-7" name="carnum">
+      <label>연식</label>
+      <select class = "form-select">
+        <option>LPG</option>
+        <option>EV</option>
+        <option>휘발유</option>
+        <option>경유</option>
+      </select>
+      <button class="btn btn-success">다음</button>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  history.replaceState({}, null, location.pathname);
+</script>
+<script src="/js/usermodify.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+.circle{
+    position:relative;
+    width : 100px;
+    height : 100px;
+    border-radius: 50%;
+    background-color: #ff9e1a;
+}
+
+.circle-next{
+    position:relative;
+    width : 100px;
+    height : 100px;
+    border-radius: 50%;
+    background-color: #ababab;
+}
+
+.circle-success{
+    position:relative;
+    width : 100px;
+    height : 100px;
+    border-radius: 50%;
+    background-color: green;
+}
+
+.number{
+    position:absolute;
+    top: 30%;
+    left: 40%;
+}
+.next-step{
+    position:absolute;
+    top:67%;
+    left:34%;
+}
+.step-size{
+    width:3%;
+    height:11%;
+    margin-left:4%;
+    margin-top:5%;
+}
+#step{
+    width:100%;
+}
+.status-area{
+    padding-left : 7%;
+}
