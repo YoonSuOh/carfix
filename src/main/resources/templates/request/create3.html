@@ -18,24 +18,24 @@
 <div id="section1">
   <h4>수리 요청하기</h4>
   <hr id="hr">
-  <h4>Step.1 고객 정보 등록</h4>
+  <h4>Step.3 수리정보 등록</h4>
   <div class="status d-flex justify-center">
     <div id="first" class="status-area">
-      <div class="circle">
+      <div class="circle-success">
         <h1 class="number">1</h1>
       </div>
       <p class="mt-2">고객정보 등록</p>
     </div>
-      <img class="step-size" src="/images/next-step.png">
+    <img class="step-size" src="/images/next-step.png">
     <div id="second" class="status-area">
-      <div class="circle-next">
+      <div class="circle-success">
         <h1 class="number">2</h1>
       </div>
       <p class="mt-2">차량정보 등록</p>
     </div>
     <img class="step-size" src="/images/next-step.png">
     <div id="third" class="status-area">
-      <div class="circle-next">
+      <div class="circle">
         <h1 class="number">3</h1>
       </div>
       <p class="mt-2">수리정보 등록</p>
@@ -48,18 +48,26 @@
       <p class="mt-2">수리요청 완료</p>
     </div>
   </div>
-  <div class="align-items-center">
-    <form action="/requests/create/step0" method="get">
-      <label>고객명</label>
-      <input class="form-control col-7" th:value="${session.nickname}" name="name">
-      <label>연락처</label>
-      <input class="form-control col-7" th:value="${session.phoneNumber}" name="phoneNumber">
-      <label>이메일</label>
-      <input class="form-control col-7" th:value="${session.email}" name="email">
-      <button type="submit" class="btn btn-success">완료</button>
-    </form>
-  </div>
+  <h5>수리 종류 선택</h5>
+  <p>점검/교체</p>
+  <label><input type="checkbox" name="color" value="엔진오일 교체/점검">엔진오일 교체/점검</label>
+  <label><input type="checkbox" name="color" value="엔진오일 교체/점검">브레이크 오일 교체/점검</label>
+  <label><input type="checkbox" name="color" value="냉각수 교체/점검">냉각수 교체/점검</label>
+  <label><input type="checkbox" name="color" value="냉각수 교체/점검">타이어 교체/점검</label>
+  <p>점검/교체</p>
+  <label><input type="checkbox" name="color" value="전면 범퍼 손상">전면 범퍼 손상</label><br>
+  <label><input type="checkbox" name="color" value="전면 범퍼 손상">후면 범퍼 손상</label><br>
+  <label><input type="checkbox" name="color" value="측면 손상">측면 손상(휀더, 도어)</label><br>
+  <label><input type="checkbox" name="color" value="사이드미러 손상">사이드미러 손상</label>
+  <h5>수리 종류 선택</h5>
+  <input type="file"> 사진 업로드(여러장 업로드도 가능합니다.)
+  <h5>기타 요청사항</h5>
+  <textarea>
+  </textarea>
 </div>
+<script type="text/javascript">
+  history.replaceState({}, null, location.pathname);
+</script>
 <script src="/js/usermodify.js"></script>
 </body>
 </html>

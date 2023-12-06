@@ -38,7 +38,7 @@
       <div class="circle-next">
         <h1 class="number">3</h1>
       </div>
-      <p class="mt-2">파손부위 등록</p>
+      <p class="mt-2">수리정보 등록</p>
     </div>
     <img class="step-size" src="/images/next-step.png">
     <div id="last" class="status-area">
@@ -48,20 +48,44 @@
       <p class="mt-2">번ㅇ</p>
     </div>
   </div>
-  <div class="align-items-center">
-    <form action="/requests/create/1" method="get">
-      <label>모델</label>
-      <input class="form-control col-7" name="model">
-      <label>연락처</label>
-      <input class="form-control col-7" name="carnum">
-      <label>연식</label>
-      <select class = "form-select">
-        <option>LPG</option>
-        <option>EV</option>
-        <option>휘발유</option>
-        <option>경유</option>
-      </select>
-      <button class="btn btn-success">다음</button>
+  <div class="container">
+    <form action="/requests/create/step2" method="get">
+      <div class="row align-items-center">
+          <div class="col">
+            <label>모델</label>
+            <input class="form-control col-7" name="model">
+          </div>
+      </div>
+      <div class="row align-items-center mt-3">
+          <div class="col">
+            <label>차량번호</label>
+            <input class="form-control col-7" name="carnum">
+          </div>
+      </div>
+      <div class="row align-items-center mt-3">
+          <div class="col">
+            <label>연식</label>
+            <select class = "form-select" name="year">
+              <option th:each="year : ${#numbers.sequence(1990, 2023)}" th:value="${year}" th:text="${year}"></option>
+            </select>
+          </div>
+      </div>
+      <div class="row align-items-center mt-3">
+          <div class="col">
+            <label>유종</label>
+            <select class = "form-select" name="fuel">
+              <option value="휘발유">휘발유</option>
+              <option value="경유">경유</option>
+              <option value="LPG">LPG</option>
+              <option value="EV">EV</option>
+            </select>
+          </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <button type="submit" class="btn btn-success">다음</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>
