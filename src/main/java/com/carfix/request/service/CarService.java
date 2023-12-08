@@ -22,4 +22,9 @@ public class CarService {
                 .km(km)
                 .build());
     }
+
+    // 요청정보랑 맞는 차량 정보 뿌리기
+    public CarEntity getCarById(int reqidx){
+        return carRepository.getCarById(reqidx);
+    }
 }

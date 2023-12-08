@@ -29,6 +29,7 @@ public class KakaoController {
         url.append("client_id=" + "f7cb1db7fa96462cab3a07f62034838d");
         url.append("&redirect_uri=http://localhost:8080/kakao/callback");
         url.append("&response_type=code");
+        url.append("&prompt=select_account");
 
         return "redirect:" + url.toString();
     }
@@ -48,6 +49,7 @@ public class KakaoController {
         session.setAttribute("nickname", user.getNickname());
         session.setAttribute("email", user.getEmail());
         session.setAttribute("phoneNumber", user.getPhoneNumber());
+        session.setAttribute("perm", user.getPerm());
 
         return "redirect:/";
     }

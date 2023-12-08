@@ -43,4 +43,9 @@ public class PictureService {
                     .build());
         }
     }
+
+    // 요청정보랑 맞는 대표 사진 뿌리기
+    public PictureEntity getPictureByIdOne(int reqidx) {
+        return pictureRepository.findPictureByIdOne(reqidx);
+    }
 }

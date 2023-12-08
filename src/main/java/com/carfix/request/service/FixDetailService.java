@@ -18,4 +18,9 @@ public class FixDetailService {
                 .name(name)
                 .build());
     }
+
+    // 요청정보랑 맞는 차량 정보 뿌리기
+    public FixDetailEntity getFixDetailById(int reqidx) {
+        return fixDetailRepository.findDetailById(reqidx);
+    }
 }

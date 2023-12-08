@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -18,5 +20,15 @@ public class FixRequestService {
             .other(other)
             .build());
         return fixRequestEntity;
+    }
+
+    // 생성된 모든 수리 요청 가져오기
+    public List<FixRequestEntity> getAllFixRequest(){
+        return fixRequestRepository.findAll();
+    }
+
+    // 요청에 맞는 수리 요청 가져오기
+    public FixRequestEntity getFixRequestById(int idx){
+        return fixRequestRepository.findFixRequestByIdOne(idx);
     }
 }
