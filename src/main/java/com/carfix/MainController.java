@@ -13,6 +13,8 @@ import com.carfix.request.service.CarService;
 import com.carfix.request.service.FixDetailService;
 import com.carfix.request.service.FixRequestService;
 import com.carfix.request.service.PictureService;
+import com.carfix.user.entity.UserEntity;
+import com.carfix.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,7 @@ public class MainController {
     private final FixDetailService fixDetailService;
     private final PictureService pictureService;
     private final FixRequestService fixRequestService;
+    private final UserService userService;
 
     @GetMapping("/")
     public String main(Model model, HttpSession session){
@@ -50,9 +53,12 @@ public class MainController {
                     FixRequestDTO fixRequestDTO = new FixRequestDTO();
 
                     CarEntity carEntity = carService.getCarById(i);
+                    FixRequestEntity fixRequestEntity = fixRequestService.getFixRequestById(i);
+                    UserEntity userEntity = userService.getUserById(fixRequestEntity.getUseridx());
                     FixDetailEntity detailEntity = fixDetailService.getFixDetailById(i);
                     PictureEntity pictureEntity = pictureService.getPictureByIdOne(i);
 
+                    fixRequestDTO.setUser(userEntity.getNickname());
                     fixRequestDTO.setReqidx(i);
                     fixRequestDTO.setCarName(carEntity.getModel());
                     fixRequestDTO.setImage(pictureEntity.getName());

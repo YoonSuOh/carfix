@@ -26,4 +26,10 @@ public class UserService {
             return 0;
         }
     }
+
+    // 요청에 따른 유저 정보 가져오기
+    public UserEntity getUserById(long useridx){
+        return userRepository.findUserById(useridx);
+    }
+
 }

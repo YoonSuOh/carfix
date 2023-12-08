@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FixRequestDTO {
+    private String user;
     private long reqidx;
     private String image;
     private String carName;
