@@ -15,20 +15,66 @@
   <div th:insert="/header"></div>
 </div>
 <br>
+<!-- 회원 정보 입력 창 -->
 <div id="section1">
   <h4>수리 요청하기</h4>
-  <hr id="hr">
+  <hr class="hr">
   <h4>Step.1 고객 정보 등록</h4>
   <div class="status d-flex justify-center">
-    <div id="first" class="status-area">
+    <div class="status-area first">
       <div class="circle">
         <h1 class="number">1</h1>
       </div>
       <p class="mt-2">고객정보 등록</p>
     </div>
       <img class="step-size" src="/images/next-step.png">
-    <div id="second" class="status-area">
+    <div class="status-area second">
       <div class="circle-next">
+        <h1 class="number">2</h1>
+      </div>
+      <p class="mt-2">차량정보 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div class="status-area third">
+      <div class="circle-next">
+        <h1 class="number">3</h1>
+      </div>
+      <p class="mt-2">수리정보 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div class="status-area last">
+      <div class="circle-next">
+        <h1 class="number">4</h1>
+      </div>
+      <p class="mt-2">수리요청 완료</p>
+    </div>
+  </div>
+  <div class="align-items-center">
+      <label>고객명</label>
+      <input class="form-control col-7" th:value="${session.nickname}" name="name">
+      <label>연락처</label>
+      <input class="form-control col-7" th:value="${session.phoneNumber}" name="phoneNumber">
+      <label>이메일</label>
+      <input class="form-control col-7" th:value="${session.email}" name="email">
+      <button id="step2" type="button" class="btn btn-success">다음</button>
+  </div>
+</div>
+<!-- 차량 정보 입력 창 -->
+<form enctype="multipart/form-data" id="uploadForm">
+<div id="section2" style="display:none;">
+  <h4>수리 요청하기</h4>
+  <hr class="hr">
+  <h4>Step.2 차량 정보 등록</h4>
+  <div class="status d-flex justify-center">
+    <div id="first" class="status-area">
+      <div class="circle-success">
+        <h1 class="number">1</h1>
+      </div>
+      <p class="mt-2">고객정보 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div id="second" class="status-area">
+      <div class="circle">
         <h1 class="number">2</h1>
       </div>
       <p class="mt-2">차량정보 등록</p>
@@ -45,21 +91,207 @@
       <div class="circle-next">
         <h1 class="number">4</h1>
       </div>
+      <p class="mt-2">번ㅇ</p>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row align-items-center">
+        <div class="col">
+          <label>모델</label>
+          <input class="form-control col-7" name="model">
+        </div>
+      </div>
+      <div class="row align-items-center mt-3">
+        <div class="col">
+          <label>차량번호</label>
+          <input class="form-control col-7" name="carNum">
+        </div>
+      </div>
+    <div class="row align-items-center mt-3">
+      <div class="col">
+        <label>주행거리</label>
+        <input class="form-control col-7" name="km">
+      </div>
+    </div>
+      <div class="row align-items-center mt-3">
+        <div class="col">
+          <label>연식</label>
+          <select class = "form-select" name="year">
+            <option th:each="year : ${#numbers.sequence(1990, 2023)}" th:value="${year}" th:text="${year}"></option>
+          </select>
+        </div>
+      </div>
+      <div class="row align-items-center mt-3">
+        <div class="col">
+          <label>유종</label>
+          <select class = "form-select" name="fuel">
+            <option value="휘발유">휘발유</option>
+            <option value="경유">경유</option>
+            <option value="LPG">LPG</option>
+            <option value="EV">EV</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <button id="step3" type="button" class="btn btn-success">다음</button>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- 수리 정보 입력 창 -->
+<div id="section3" style="display:none;">
+  <h4>수리 요청하기</h4>
+  <hr id="hr">
+  <h4>Step.3 수리정보 등록</h4>
+  <div class="status d-flex justify-center">
+    <div class="status-area first">
+      <div class="circle-success">
+        <h1 class="number">1</h1>
+      </div>
+      <p class="mt-2">고객정보 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div class="status-area second">
+      <div class="circle-success">
+        <h1 class="number">2</h1>
+      </div>
+      <p class="mt-2">차량정보 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div class="status-area third">
+      <div class="circle">
+        <h1 class="number">3</h1>
+      </div>
+      <p class="mt-2">수리정보 등록</p>
+    </div>
+    <img class="step-size" src="/images/next-step.png">
+    <div class="status-area last">
+      <div class="circle-next">
+        <h1 class="number">4</h1>
+      </div>
       <p class="mt-2">수리요청 완료</p>
     </div>
   </div>
-  <div class="align-items-center">
-    <form action="/requests/create/step0" method="get">
-      <label>고객명</label>
-      <input class="form-control col-7" th:value="${session.nickname}" name="name">
-      <label>연락처</label>
-      <input class="form-control col-7" th:value="${session.phoneNumber}" name="phoneNumber">
-      <label>이메일</label>
-      <input class="form-control col-7" th:value="${session.email}" name="email">
-      <button type="submit" class="btn btn-success">완료</button>
-    </form>
-  </div>
+  <h5>수리 종류 선택</h5>
+    <p>점검/교체</p>
+    <label><input type="checkbox" name="fixkind" value="엔진오일 교체/점검">엔진오일 교체/점검</label>
+    <label><input type="checkbox" name="fixkind" value="브레이크 오일 교체/점검">브레이크 오일 교체/점검</label>
+    <label><input type="checkbox" name="fixkind" value="냉각수 교체/점검">냉각수 교체/점검</label>
+    <label><input type="checkbox" name="fixkind" value="타이어 교체/점검">타이어 교체/점검</label>
+    <p>파손부위 등록</p>
+    <label><input type="checkbox" name="fixkind" value="전면 범퍼 손상">전면 범퍼 손상</label><br>
+    <label><input type="checkbox" name="fixkind" value="후면 범퍼 손상">후면 범퍼 손상</label><br>
+    <label><input type="checkbox" name="fixkind" value="측면 손상">측면 손상(휀더, 도어)</label><br>
+    <label><input type="checkbox" name="fixkind" value="사이드미러 손상">사이드미러 손상</label>
+    <h5>사진 등록(여러 장 업로드 가능)</h5>
+    <input type="file" name="files" multiple="multiple" id="files">
+    <h5>기타 요청사항</h5>
+    <textarea class="form-control" id="other"></textarea>
+    <button type="button" class="btn btn-success" id="completeBtn">완료</button>
 </div>
+</form>
 <script src="/js/usermodify.js"></script>
+<!-- 다음 창 출력 코드 -->
+<script>
+  /* 차량 정보 입력 창 보이기 */
+  $('#step2').on('click', function() {
+    $('#section1').css({
+      "display" : "none"
+    });
+    $('#section2').css({
+      "display" : "block"
+    });
+  });
+  /* 수리 정보 입력 창 보이기 */
+  $('#step3').on('click', function() {
+    $('#section2').css({
+      "display" : "none"
+    });
+    $('#section3').css({
+      "display" : "block"
+    });
+  });
+</script>
+<!-- 파일 업로드 / 서버 전송 코드 -->
+<script>
+  $(document).ready(function(){
+    var inputFileList = [];
+
+    // 파일 업로드
+    $('input[name=files]').on('change', function(e) {
+      var files = e.target.files;
+      var filesArr = Array.prototype.slice.call(files);
+
+      // 업로드 된 파일 유효성 체크
+      if (filesArr.length > 10) {
+        alert("이미지는 최대 10개까지 업로드 가능합니다.");
+        $('input[name=files]').val();
+        return;
+      }
+
+      filesArr.forEach(function(f) {
+        inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
+      });
+    });
+
+    // 서버에 수리 요청 전송
+    $('#completeBtn').on('click', function(){
+      let formData = new FormData();
+      /* 차량 정보 저장 */
+      let model = $('input[name = model]').val().trim();
+      let carNum = $('input[name = carNum]').val().trim();
+      let km = $('input[name = km]').val().trim();
+      let year = $('select[name = year]').val().trim();
+      let fuel = $('select[name = fuel]').val().trim();
+      let other = $('#other').val().trim();
+
+      var checkboxArray = [];
+
+      // 체크값 배열에 넣기
+      $("input[name='fixkind']:checked").each(function(i) {
+        checkboxArray.push($(this).val());
+      });
+
+      formData.append("model", model);
+      formData.append("carNum", carNum);
+      formData.append("km", km);
+      formData.append("year", year);
+      formData.append("fuel", fuel);
+      formData.append("other", other);
+
+      for (let i = 0; i < checkboxArray.length; i++) {
+        formData.append("checkbox", checkboxArray[i]);
+      }
+
+      for (let i = 0; i < inputFileList.length; i++) {
+        formData.append("file", inputFileList[i]);
+      }
+
+      console.log("checkedFixKind: " + checkboxArray);
+      console.log("inputFileList: " + inputFileList);
+
+      $.ajax({
+        type: "POST",
+        enctype: "multiple/form-data",
+        url: "/requests/create",
+        data : formData,
+        processData : false,
+        contentType : false,
+        success: function(data) {
+          if(data.code == 200){
+            alert("수리 요청 성공!");
+            location.href = "/requests/create/success";
+          } else {
+            alert('수리 요청 실패...');
+          }
+        }
+        , error: function(e) {
+          alert("error:" + e);
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>

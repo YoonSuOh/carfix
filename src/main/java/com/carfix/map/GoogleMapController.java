@@ -1,6 +1,5 @@
 package com.carfix.map;
 
-import com.carfix.aop.TimeTrace;
 import com.carfix.common.GeoData;
 import com.carfix.map.service.GoogleMapApiService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,6 @@ public class GoogleMapController {
     private final GoogleMapApiService googleMapApiService;
 
     @PutMapping("/distance")
-    @TimeTrace
     public Map<String, Object> getDistance(@RequestBody GeoData geoData){
         double lat2 = geoData.getLat();
         double lng2 = geoData.getLng();
