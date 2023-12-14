@@ -10,6 +10,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63jdrc3pRrYKwBui11CgWXcrD0arWc7o&libraries=places"></script>
   <script src="/js/map.js"></script>
   <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/request/request.css" />
 </head>
 <body id="wrap">
 <div id="map" style="display:none;"></div>
@@ -39,13 +40,10 @@
     <th:block th:each="lang : ${#strings.arraySplit(request.carImages, ',')}">
       <img th:src="@{/img/__${lang}__}"/>
     </th:block>
+
   </div>
-  <button id="previousBtn" style="background-color:transparent;">
-    <img src="/images/left.png"  alt="대체 텍스트" onclick="" >
-  </button>
-  <button id="nextBtn" style="background-color:transparent;">
-    <img src="/images/left.png" alt="대체 텍스트" onclick="" >
-  </button>
+  <img id="previousBtn" class="xBtn" src="/images/left.png"  alt="대체 텍스트" onclick="" >
+  <img id="nextBtn" class="xBtn" src="/images/right.png" alt="대체 텍스트" onclick="" >
 </div>
 <script src="/js/usermodify.js"></script>
 <script>
