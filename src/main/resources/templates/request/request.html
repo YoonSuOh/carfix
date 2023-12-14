@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>카픽스 - 수리요청</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <!-- jquery 원본 -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63jdrc3pRrYKwBui11CgWXcrD0arWc7o&libraries=places"></script>
+  <script src="/js/map.js"></script>
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body id="wrap">
+<div id="map" style="display:none;"></div>
+<div id="header">
+  <div th:insert="/header"></div>
+</div>
+<br>
+<div id="section">
+  <h4>[[${request.user}]]님의 수리요청</h4>
+  <hr class="hr" />
+  <div>
+    <h4>차량정보</h4>
+    <b>모델 : </b> <span th:text="${request.carName}"></span><br>
+    <b>차량번호 : </b> <span th:text="${request.carNum}"></span><br>
+    <b>연식 : </b> <span th:text="${request.carYear}"></span><br>
+    <b>유종 : </b> <span th:text="${request.carFuel}"></span>
+  </div>
+  <br>
+  <div>
+    <h4>수리 정보</h4>
+    <p th:text="${request.fixdetail}"></p>
+  </div>
+  <h4>기타 요청 사항</h4>
+  <p th:text="${request.others}"></p>
+  <h4>차량 사진</h4>
+  <div id="carImg" class="container">
+    <th:block th:each="lang : ${#strings.arraySplit(request.carImages, ',')}">
+      <img th:src="@{/img/__${lang}__}"/>
+    </th:block>
+  </div>
+  <button id="previousBtn" style="background-color:transparent;">
+    <img src="/images/left.png"  alt="대체 텍스트" onclick="" >
+  </button>
+  <button id="nextBtn" style="background-color:transparent;">
+    <img src="/images/left.png" alt="대체 텍스트" onclick="" >
+  </button>
+</div>
+<script src="/js/usermodify.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var totalImages = document.querySelectorAll('#carImg img').length;
+    var currentImageIndex = 0;
+
+    // 모든 이미지 숨기기
+    document.querySelectorAll('#carImg img').forEach(function(img) {
+      img.style.display = 'none';
+    });
+
+    // 첫 번째 이미지 보이기
+    document.querySelectorAll('#carImg img')[currentImageIndex].style.display = 'block';
+
+    document.getElementById('nextBtn').addEventListener('click', function() {
+      showImage(currentImageIndex + 1);
+    });
+
+    document.getElementById('previousBtn').addEventListener('click', function() {
+      showImage(currentImageIndex - 1);
+    });
+
+    function showImage(index) {
+      if (index >= 0 && index < totalImages) {
+        currentImageIndex = index;
+        document.querySelectorAll('#carImg img').forEach(function(img) {
+          img.style.display = 'none';
+        });
+        document.querySelectorAll('#carImg img')[currentImageIndex].style.display = 'block';
+      }
+    }
+  });
+</script>
+</body>
+</html>

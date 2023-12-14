@@ -19,6 +19,7 @@ public class CarEntity {
     private Long caridx;
     private Long reqidx;
     private String model;
+    private String carnum;
     private int year;
     private String fuel;
     private int km;

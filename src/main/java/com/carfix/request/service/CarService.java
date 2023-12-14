@@ -17,6 +17,7 @@ public class CarService {
         carRepository.save(CarEntity.builder()
                 .reqidx(reqidx)
                 .model(model)
+                .carnum(carNum)
                 .year(year)
                 .fuel(fuel)
                 .km(km)

@@ -46,11 +46,10 @@ public class RequestRestController {
 
         // 차량 정보 저장
         carService.addCarInfo(reqidx, model, carNum, year, fuel, km);
+        String result = String.join(",", checkbox);
 
         // 수리 정보(파손 부위 저장)
-        for(int i=0;i<checkbox.size();i++){
-            fixDetailService.addFixDetail(reqidx, checkbox.get(i));
-        }
+        fixDetailService.addFixDetail(reqidx, result);
         // 사진 저장
         pictureService.addPictureEntity(reqidx, files);
 

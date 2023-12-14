@@ -2,7 +2,7 @@
 <p>최신순</p>
 <hr id="hr">
 <div id="itemcontainer">
-    <div class="item" th:each="list : ${list}">
+    <div class="item" th:each="list : ${request}">
         <a th:href="@{|/requests/${list.reqidx}|}">
             <img th:src="@{/img/__${list.image}__}"/>
         </a>

@@ -12,5 +12,11 @@ public class FixRequestDTO {
     private long reqidx;
     private String image;
     private String carName;
+    private String carNum;
+    private int carYear;
+    private int km;
+    private String carFuel;
     private String fixdetail;
+    private String others;
+    private String carImages;
 }

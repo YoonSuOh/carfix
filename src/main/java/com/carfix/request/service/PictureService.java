@@ -48,4 +48,9 @@ public class PictureService {
     public PictureEntity getPictureByIdOne(int reqidx) {
         return pictureRepository.findPictureByIdOne(reqidx);
     }
+
+    // 요청정보에 맞는 모든 사진 가져오기
+    public List<PictureEntity> getPictureById(int reqidx){
+        return pictureRepository.findPictureById(reqidx);
+    }
 }
